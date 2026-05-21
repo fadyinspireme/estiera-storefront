@@ -47,7 +47,7 @@ function loadDeferredData() {
 }
 
 const BUNDLES = [
-  {qty: 1, label: '1 Lamp', sublabel: 'Standard price', price: 39.99, compareAt: null, popular: false},
+  {qty: 1, label: '1 Lamp', sublabel: 'You save 20%', price: 39.99, compareAt: 49.99, popular: false},
   {qty: 2, label: '2 Lamps', sublabel: 'You save 15%', price: 67.99, compareAt: 79.98, popular: true},
 ];
 
