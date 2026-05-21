@@ -4,9 +4,14 @@
   box-sizing: border-box;
 }
 
-html, body {
+html {
+  overflow-x: hidden;
+}
+
+body {
   overflow-x: hidden;
   max-width: 100%;
+  position: relative;
 }
 
 :root {
@@ -1868,9 +1873,10 @@ html, body {
 /* Page wrapper */
 .tr-page {
   width: 100%;
-  max-width: 100vw;
-  overflow-x: hidden;
+  max-width: 100%;
+  overflow: hidden;
   box-sizing: border-box;
+  position: relative;
 }
 
 /* Main product layout */
@@ -1880,13 +1886,19 @@ html, body {
   margin: 0 auto;
   box-sizing: border-box;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+}
+
+.tr-product-inner > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .tr-product-inner {
   display: grid;
   grid-template-columns: 1fr;
   gap: 3rem;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -1955,6 +1967,15 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 1.3rem;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.tr-info > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 /* Rating */
@@ -2003,6 +2024,7 @@ html, body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.6rem;
+  width: 100%;
 }
 
 .tr-badge {
@@ -2015,6 +2037,14 @@ html, body {
   font-size: 0.82rem;
   font-weight: 500;
   color: #5B21B6;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.tr-badge span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .tr-badge-icon {
@@ -2121,6 +2151,7 @@ html, body {
   grid-template-columns: 1fr 1fr;
   gap: 0.6rem;
   margin-bottom: 0;
+  width: 100%;
 }
 
 .tr-bundle-card {
