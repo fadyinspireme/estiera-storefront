@@ -161,19 +161,27 @@ export default function Product() {
             {/* Feature badges */}
             <div className="tr-badges">
               <div className="tr-badge">
-                <span className="tr-badge-icon">🌈</span>
+                <span className="tr-badge-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                </span>
                 <span>16 RGB Colors</span>
               </div>
               <div className="tr-badge">
-                <span className="tr-badge-icon">🎮</span>
+                <span className="tr-badge-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><circle cx="12" cy="17" r="1"/><path d="M9 7h6M9 11h6"/></svg>
+                </span>
                 <span>Remote Control</span>
               </div>
               <div className="tr-badge">
-                <span className="tr-badge-icon">🌊</span>
+                <span className="tr-badge-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="3"/></svg>
+                </span>
                 <span>Calming Glow</span>
               </div>
               <div className="tr-badge">
-                <span className="tr-badge-icon">✨</span>
+                <span className="tr-badge-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+                </span>
                 <span>Aesthetic Decor</span>
               </div>
             </div>
