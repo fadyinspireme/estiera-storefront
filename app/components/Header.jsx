@@ -8,18 +8,20 @@ import {useAside} from '~/components/Aside';
  */
 export function Header({header, isLoggedIn, cart, publicStoreDomain}) {
   const {shop, menu} = header;
+  const {open} = useAside();
   return (
     <header className="header">
-      <NavLink prefetch="intent" to="/" className="header-logo" end>
+      <button className="header-hamburger" onClick={() => open('mobile')} aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+      <NavLink prefetch="intent" to="/" className="header-logo header-logo-center" end>
         <span className="logo-text">Estiera</span>
       </NavLink>
-      <HeaderMenu
-        menu={menu}
-        viewport="desktop"
-        primaryDomainUrl={header.shop.primaryDomain.url}
-        publicStoreDomain={publicStoreDomain}
-      />
-      <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+      <CartToggle cart={cart} />
     </header>
   );
 }
@@ -133,6 +135,7 @@ function CartBadge({count}) {
   return (
     <a
       href="/cart"
+      className="header-cart-btn"
       onClick={(e) => {
         e.preventDefault();
         open('cart');
@@ -144,7 +147,13 @@ function CartBadge({count}) {
         });
       }}
     >
-      Cart {count === null ? <span>&nbsp;</span> : count}
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+      </svg>
+      {count !== null && count > 0 && (
+        <span className="header-cart-count">{count}</span>
+      )}
     </a>
   );
 }
