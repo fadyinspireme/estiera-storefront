@@ -111,7 +111,7 @@ export default function Product() {
     },
     {
       label: 'Shipping & Returns',
-      content: <p>Ships within 1-2 business days. Free shipping on orders over $50. 30-day hassle-free returns.</p>,
+      content: <p>Orders are processed within 1–2 business days and delivered within 5–8 business days. Free worldwide shipping on orders over $60. 30-day hassle-free returns.</p>,
     },
   ];
 
