@@ -2379,6 +2379,24 @@ html, body {
   color: var(--accent-primary);
 }
 
+.desc-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.desc-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
 .tr-acc-body {
   padding-bottom: 1rem;
   font-size: 0.88rem;

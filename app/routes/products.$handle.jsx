@@ -106,7 +106,14 @@ export default function Product() {
           <br/>
           <p>With 16 immersive RGB colors and an easy-to-use remote control, you can customize the perfect mood for relaxing nights, late gaming sessions, or modern room decor.</p>
           <br/>
-          <p>✨ 16 customizable RGB colors<br/>✨ Soft calming ambient glow<br/>✨ Elegant minimalist design<br/>✨ Remote control included<br/>✨ Perfect for bedrooms, desks & modern interiors</p>
+          <ul className="desc-features">
+            {['16 customizable RGB colors','Soft calming ambient glow','Elegant minimalist design','Remote control included','Perfect for bedrooms, desks & modern interiors'].map((f, i) => (
+              <li key={i} className="desc-feature-item">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
         </div>,
     },
     {
