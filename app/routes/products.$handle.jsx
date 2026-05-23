@@ -1,5 +1,8 @@
 import {useLoaderData} from 'react-router';
 import {useState} from 'react';
+import vibeVideo1 from '~/assets/17e0c80ecc57c5e1a9e89a24b4ec6f9b.mp4';
+import vibeVideo2 from '~/assets/1cf64b4164ca5b88e8ab2d9ee52f3573.mp4';
+import vibeVideo3 from '~/assets/c32d79e0f514ea354faf22eba3f7a849_720w.mp4';
 import {
   getSelectedProductOptions,
   Analytics,
@@ -266,26 +269,20 @@ export default function Product() {
           <div className="tr-vibe-cards-wrap">
             <div className="tr-vibe-cards">
               {[
-                {
-                  title: 'Cozy Night Setup',
-                  tag: 'Bedroom',
-                  grad: 'linear-gradient(170deg,#0d0618 0%,#1e0b35 35%,#4a1277 70%,#7c3aed 100%)',
-                },
-                {
-                  title: 'Minimal Desk Vibes',
-                  tag: 'Workspace',
-                  grad: 'linear-gradient(170deg,#080412 0%,#150930 40%,#2e1065 75%,#5b21b6 100%)',
-                },
-                {
-                  title: 'Late Night Glow',
-                  tag: 'Ambiance',
-                  grad: 'linear-gradient(170deg,#0a0315 0%,#1a0538 40%,#3b0764 70%,#6d28d9 100%)',
-                },
+                {title: 'Cozy Night Setup', tag: 'Bedroom', src: vibeVideo1},
+                {title: 'Minimal Desk Vibes', tag: 'Workspace', src: vibeVideo2},
+                {title: 'Late Night Glow', tag: 'Ambiance', src: vibeVideo3},
               ].map((card, i) => (
                 <div key={i} className="tr-vibe-card">
-                  <div className="tr-vibe-visual" style={{background: card.grad}}>
-                    <div className="tr-vibe-orb" />
-                    <div className="tr-vibe-jellyfish">🪼</div>
+                  <div className="tr-vibe-visual">
+                    <video
+                      className="tr-vibe-video"
+                      src={card.src}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    />
                     <div className="tr-vibe-overlay" />
                     <div className="tr-vibe-card-bottom">
                       <span className="tr-vibe-tag">{card.tag}</span>

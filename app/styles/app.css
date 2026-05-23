@@ -2612,6 +2612,14 @@ html, body {
   z-index: 1;
 }
 
+.tr-vibe-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .tr-vibe-overlay {
   position: absolute;
   inset: 0;
