@@ -344,63 +344,67 @@ export default function Product() {
   );
 }
 
-const RVX_DATA = [
-  {name: 'Sofia',  text: 'This lamp completely changed my room\'s energy. The glow at night is something else entirely.', photo: rev1, mostHelpful: true},
-  {name: 'Emma',   text: 'I turn it on every single night. My whole room feels like a dream setup now.', photo: rev2},
-  {name: 'Lia',    text: 'The glow at night is genuinely unreal. Best mood lamp I have ever owned.', photo: rev3},
-  {name: 'Maya',   text: 'My room feels like a Pinterest board now. Everyone who visits asks about it.', photo: rev4, mostHelpful: true},
-  {name: 'Zoe',    text: 'Bought it as a gift and immediately ordered one for myself. So aesthetic.', photo: rev5},
-  {name: 'Aria',   text: 'Everyone who comes over asks where I got this. The vibe is absolutely immaculate.', photo: rev6},
-  {name: 'Chloe',  text: 'The jellyfish design is so unique. My setup looks cinematic with this on.', photo: rev7},
-  {name: 'Isla',   text: 'Perfect for late night desk vibes. Soft glow, zero eye strain. Absolutely love it.', photo: rev8},
-  {name: 'Nora',   text: 'Even better than the photos. The quality is premium and it arrived so fast.', photo: rev9},
+const ALL_REVIEWS = [
+  {name: 'Sofia', photo: rev1, text: 'This lamp completely changed the vibe of my room. I turn it on every night.', date: 'May 2025'},
+  {name: 'Emma', photo: rev2, text: 'My setup finally feels cozy and expensive. Everyone asks where I got it.', date: 'April 2025'},
+  {name: 'Lia', photo: rev3, text: 'The glow looks unreal at night. Best thing I have bought for my room.', date: 'April 2025'},
+  {name: 'Maya', photo: rev4, text: 'I turn it on every single night. The purple mode is so calming.', date: 'March 2025'},
+  {name: 'Zoe', photo: rev5, text: 'My room looks straight from Pinterest now. So aesthetic and premium.', date: 'March 2025'},
+  {name: 'Aria', photo: rev6, text: 'Bought it as a gift and ordered one for myself too. The quality is amazing.', date: 'February 2025'},
+  {name: 'Chloe', photo: rev7, text: 'The jellyfish design is so unique. It transforms the whole room energy.', date: 'February 2025'},
+  {name: 'Isla', photo: rev8, text: 'Perfect for my desk. The soft glow does not strain my eyes at all.', date: 'January 2025'},
+  {name: 'Nora', photo: rev9, text: 'Even better in person. Super easy to set up and the remote is great.', date: 'January 2025'},
 ];
 
-function RvxCard({r, floatClass}) {
+function RvCard({r}) {
   return (
-    <div className={`rvx-card ${floatClass}`}>
-      {r.mostHelpful && <div className="rvx-helpful-badge">⭐ Most Helpful</div>}
-      <div className="rvx-card-header">
-        <div className="rvx-avatar">{r.name[0]}</div>
-        <div>
-          <p className="rvx-name">{r.name}</p>
-          <span className="rvx-verified">
-            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    <div className="rv-card">
+      <div className="rv-card-top">
+        <div className="rv-avatar-initial">{r.name[0]}</div>
+        <div className="rv-card-author">
+          <p className="rv-name">{r.name}</p>
+          <span className="rv-verified">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
             Verified Customer
           </span>
         </div>
       </div>
-      <div className="rvx-stars">★★★★★</div>
-      <p className="rvx-text">{r.text}</p>
-      <div className="rvx-img-wrap">
-        <img src={r.photo} alt="Customer setup" className="rvx-img" />
-      </div>
+      <div className="rv-stars">★★★★★</div>
+      <p className="rv-text">{r.text}</p>
+      {r.photo && (
+        <img src={r.photo} alt="Customer photo" className="rv-proof-img" />
+      )}
     </div>
   );
 }
 
 function ReviewsSection() {
-  const col1 = [RVX_DATA[0], RVX_DATA[3], RVX_DATA[6]];
-  const col2 = [RVX_DATA[1], RVX_DATA[4], RVX_DATA[7]];
-  const col3 = [RVX_DATA[2], RVX_DATA[5], RVX_DATA[8]];
-  const floats = ['rvx-float-a','rvx-float-b','rvx-float-c'];
+  const col1 = ALL_REVIEWS.slice(0, 3);
+  const col2 = ALL_REVIEWS.slice(3, 6);
+  const col3 = ALL_REVIEWS.slice(6, 9);
   return (
-    <section className="rvx-section">
-      <div className="rvx-bg-orb rvx-bg-orb--1" />
-      <div className="rvx-bg-orb rvx-bg-orb--2" />
-      <div className="rvx-header">
-        <span className="rvx-label">CUSTOMER LOVE</span>
-        <h2 className="rvx-title">What Our Customers Say</h2>
-        <p className="rvx-sub">Real rooms. Real setups. Real ESTIERA vibes.</p>
+    <section className="rv-section">
+      <div className="rv-header">
+        <span className="rv-label">CUSTOMER LOVE</span>
+        <h2 className="rv-title">What Our Customers Say</h2>
+        <p className="rv-subtitle">Thousands are transforming their rooms with ESTIERA.</p>
       </div>
-      <div className="rvx-grid">
-        {[col1, col2, col3].map((col, ci) => (
-          <div key={ci} className={`rvx-col rvx-col--${ci+1}${ci === 2 ? ' rvx-col--desktop' : ''}`}>
-            {col.map((r, ri) => (
-              <RvxCard key={ri} r={r} floatClass={floats[(ci + ri) % 3]} />
-            ))}
+      <div className="rv-cols">
+        <div className="rv-col-wrap">
+          <div className="rv-col rv-col--1">
+            {[...col1, ...col1].map((r, i) => <RvCard key={i} r={r} />)}
           </div>
-        ))}
+        </div>
+        <div className="rv-col-wrap">
+          <div className="rv-col rv-col--2">
+            {[...col2, ...col2].map((r, i) => <RvCard key={i} r={r} />)}
+          </div>
+        </div>
+        <div className="rv-col-wrap rv-col-wrap--desktop">
+          <div className="rv-col rv-col--3">
+            {[...col3, ...col3].map((r, i) => <RvCard key={i} r={r} />)}
+          </div>
+        </div>
       </div>
     </section>
   );
