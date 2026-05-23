@@ -2488,6 +2488,253 @@ html, body {
   line-height: 1.65;
 }
 
+/* ── TikTok UGC Section ── */
+@keyframes ugcMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes titleGlow {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.tr-ugc {
+  background: #09050f;
+  padding: 5rem 0 0;
+  overflow: hidden;
+}
+
+.tr-ugc-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.tr-ugc-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.tr-ugc-seen-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(167,139,250,0.12);
+  border: 1px solid rgba(167,139,250,0.25);
+  color: #C4B5FD;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  margin-bottom: 1.2rem;
+}
+
+.tr-ugc-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: #A78BFA;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.tr-ugc-title {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+.tr-ugc-title span {
+  color: #A78BFA;
+}
+
+.tr-ugc-subtitle {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.45);
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.tr-ugc-cards-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem;
+}
+
+.tr-ugc-cards-wrap::-webkit-scrollbar { display: none; }
+
+.tr-ugc-cards {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  width: max-content;
+}
+
+@media (min-width: 768px) {
+  .tr-ugc-cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.tr-ugc-card {
+  width: 220px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #110820;
+  border: 1px solid rgba(167,139,250,0.12);
+  transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+}
+
+@media (min-width: 768px) {
+  .tr-ugc-card { width: auto; }
+}
+
+.tr-ugc-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 60px rgba(124,58,237,0.3);
+  border-color: rgba(167,139,250,0.35);
+}
+
+.tr-ugc-video {
+  aspect-ratio: 9/16;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.tr-ugc-glow {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(167,139,250,0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+.tr-ugc-play {
+  width: 48px;
+  height: 48px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  transition: background 200ms, transform 200ms;
+}
+
+.tr-ugc-card:hover .tr-ugc-play {
+  background: rgba(124,58,237,0.6);
+  transform: scale(1.1);
+}
+
+.tr-ugc-video-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 0.85rem 0.85rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+  z-index: 2;
+}
+
+.tr-ugc-user {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+}
+
+.tr-ugc-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #A78BFA, #7C3AED);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tr-ugc-user span {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.9);
+  font-weight: 600;
+}
+
+.tr-ugc-eng {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.55);
+}
+
+.tr-ugc-info {
+  padding: 0.9rem;
+}
+
+.tr-ugc-stars {
+  color: #F59E0B;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  margin-bottom: 0.4rem;
+}
+
+.tr-ugc-caption {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.tr-ugc-marquee-wrap {
+  overflow: hidden;
+  background: rgba(167,139,250,0.08);
+  border-top: 1px solid rgba(167,139,250,0.12);
+  padding: 0.65rem 0;
+  white-space: nowrap;
+  margin-top: 3rem;
+}
+
+.tr-ugc-marquee {
+  display: inline-flex;
+  animation: ugcMarquee 20s linear infinite;
+}
+
+.tr-ugc-marquee-item {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(167,139,250,0.6);
+  padding-right: 0.5rem;
+}
+
 /* Reviews */
 .tr-reviews {
   padding: 5rem 1.5rem;

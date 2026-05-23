@@ -253,30 +253,61 @@ export default function Product() {
         </div>
       </section>
 
-      {/* ── HELPS WITH ── */}
-      <section className="tr-helps">
-        <h2 className="tr-helps-title">TRANSFORMS YOUR ROOM</h2>
-        <div className="tr-helps-grid">
-          <div className="tr-helps-card">
-            <span className="tr-helps-icon">🌙</span>
-            <h3>Cozy Night Vibes</h3>
-            <p>The perfect ambient light for unwinding, journaling, or just existing in your room.</p>
+      {/* ── TIKTOK UGC ── */}
+      <section className="tr-ugc">
+        <div className="tr-ugc-inner">
+
+          <div className="tr-ugc-header">
+            <div className="tr-ugc-seen-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+              As seen on TikTok
+            </div>
+            <span className="tr-ugc-label">REAL CUSTOMER VIBES</span>
+            <h2 className="tr-ugc-title">TikTok can't stop talking about <span>ESTIERA</span></h2>
+            <p className="tr-ugc-subtitle">See how creators style the ESTIERA Aura Lamp in their rooms.</p>
           </div>
-          <div className="tr-helps-card">
-            <span className="tr-helps-icon">🎨</span>
-            <h3>Aesthetic Upgrade</h3>
-            <p>Instantly transforms any room into a Pinterest-worthy, dreamy space.</p>
+
+          <div className="tr-ugc-cards-wrap">
+            <div className="tr-ugc-cards">
+              {[
+                {user: '@cozyroomvibes', caption: 'this lamp changed my whole setup ✨', views: '2.4M', likes: '187K', grad: 'linear-gradient(160deg,#1a0a2e 0%,#2d1060 40%,#6b21a8 100%)'},
+                {user: '@aestheticdreams', caption: 'the glow at night is INSANE 🌙', views: '1.8M', likes: '142K', grad: 'linear-gradient(160deg,#0f0a1e 0%,#1e1050 40%,#4c1d95 100%)'},
+                {user: '@latevibess', caption: 'best purchase for my room no joke 💜', views: '3.1M', likes: '261K', grad: 'linear-gradient(160deg,#160a2a 0%,#3b0764 40%,#7e22ce 100%)'},
+              ].map((card, i) => (
+                <div key={i} className="tr-ugc-card">
+                  <div className="tr-ugc-video" style={{background: card.grad}}>
+                    <div className="tr-ugc-glow" />
+                    <div className="tr-ugc-play">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                    <div className="tr-ugc-video-bottom">
+                      <div className="tr-ugc-user">
+                        <div className="tr-ugc-avatar">{card.user[1].toUpperCase()}</div>
+                        <span>{card.user}</span>
+                      </div>
+                      <div className="tr-ugc-eng">
+                        <span>▶ {card.views}</span>
+                        <span>♥ {card.likes}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="tr-ugc-info">
+                    <div className="tr-ugc-stars">★★★★★</div>
+                    <p className="tr-ugc-caption">"{card.caption}"</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="tr-helps-card">
-            <span className="tr-helps-icon">💜</span>
-            <h3>Calming Energy</h3>
-            <p>The soft jellyfish glow reduces stress and creates a relaxing sanctuary.</p>
+
+          <div className="tr-ugc-marquee-wrap">
+            <div className="tr-ugc-marquee">
+              {Array(8).fill(null).map((_, i) => (
+                <span key={i} className="tr-ugc-marquee-item">viral on tiktok ✦ aesthetic setup ✦ cozy room ✦ dorm vibes ✦&nbsp;&nbsp;</span>
+              ))}
+            </div>
           </div>
-          <div className="tr-helps-card">
-            <span className="tr-helps-icon">📸</span>
-            <h3>Always Camera Ready</h3>
-            <p>Your room looks stunning for photos, TikToks, and late-night video calls.</p>
-          </div>
+
         </div>
       </section>
 
