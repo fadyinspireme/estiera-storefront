@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {useOptimisticCart} from '@shopify/hydrogen';
+import {useOptimisticCart, CartForm} from '@shopify/hydrogen';
 import {Link} from 'react-router';
 import {useAside} from '~/components/Aside';
 import {CartLineItem} from '~/components/CartLineItem';
@@ -59,7 +59,56 @@ function LxToggle({on}) {
   );
 }
 
-function UpsellCards({guarantee, onToggleGuarantee, shippingProtection, onToggleShipping, close}) {
+function BundleDealCard({cartLine}) {
+  if (!cartLine) return null;
+  const isBundle = (cartLine?.quantity ?? 0) >= 2;
+  const lineId = cartLine?.id;
+  const imageUrl = cartLine?.merchandise?.image?.url;
+
+  return (
+    <CartForm
+      route="/cart"
+      action={CartForm.ACTIONS.LinesUpdate}
+      inputs={{lines: [{id: lineId, quantity: isBundle ? 1 : 2}]}}
+    >
+      <button type="submit" className={`lx-bundle-card${isBundle ? ' lx-bundle-card--on' : ''}`}>
+        <div className="lx-bundle-imgs">
+          {imageUrl ? (
+            <>
+              <img src={imageUrl} alt="lamp" className="lx-bundle-img lx-bundle-img--back" />
+              <img src={imageUrl} alt="lamp" className="lx-bundle-img lx-bundle-img--front" />
+            </>
+          ) : (
+            <div className="lx-bundle-img-placeholder">💡💡</div>
+          )}
+        </div>
+        <div className="lx-bundle-body">
+          <div className="lx-bundle-badges">
+            <span className="lx-bundle-badge-free">FREE Shipping</span>
+            <span className="lx-bundle-badge-save">Save 15%</span>
+          </div>
+          <p className="lx-bundle-title">Buy 2 — Bundle Deal</p>
+          <div className="lx-bundle-prices">
+            <span className="lx-bundle-price">$67.99</span>
+            <span className="lx-bundle-compare">$79.98</span>
+          </div>
+        </div>
+        <div className="lx-bundle-check">
+          {isBundle ? (
+            <svg width="22" height="22" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="11" fill="#7C3AED"/>
+              <polyline points="7 12 10 15 17 9" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          ) : (
+            <div className="lx-bundle-check-empty" />
+          )}
+        </div>
+      </button>
+    </CartForm>
+  );
+}
+
+function UpsellCards({guarantee, onToggleGuarantee, shippingProtection, onToggleShipping, cartLine}) {
   return (
     <div className="lx-upsells">
       <div
@@ -110,20 +159,7 @@ function UpsellCards({guarantee, onToggleGuarantee, shippingProtection, onToggle
         </div>
       </div>
 
-      <Link to="/products/estiera-aura-lamp" onClick={close} className="lx-bundle-deal">
-        <div className="lx-bundle-deal-left">
-          <div className="lx-bundle-deal-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-            </svg>
-          </div>
-          <div>
-            <p className="lx-bundle-deal-title">Choose Bundle Deal</p>
-            <p className="lx-bundle-deal-desc">Gain FREE Shipping + Save 15%</p>
-          </div>
-        </div>
-        <span className="lx-bundle-deal-arrow">→</span>
-      </Link>
+      <BundleDealCard cartLine={cartLine} />
     </div>
   );
 }
@@ -142,6 +178,7 @@ export function CartMain({layout, cart: originalCart}) {
 
   if (layout === 'aside') {
     const effectiveSubtotal = parseFloat(subtotal) + (shippingProtection ? 0.99 : 0);
+    const firstLine = cart?.lines?.nodes?.[0] ?? null;
     return (
       <div className="lx-cart">
         {!linesCount ? (
@@ -168,7 +205,7 @@ export function CartMain({layout, cart: originalCart}) {
                 onToggleGuarantee={() => setGuarantee((g) => !g)}
                 shippingProtection={shippingProtection}
                 onToggleShipping={() => setShippingProtection((s) => !s)}
-                close={close}
+                cartLine={firstLine}
               />
             </div>
             {cartHasItems && (
