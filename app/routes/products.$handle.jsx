@@ -253,17 +253,6 @@ export default function Product() {
         </div>
       </section>
 
-      {/* ── MARQUEE ── */}
-      <div className="tr-marquee-wrap">
-        <div className="tr-marquee">
-          {Array(8).fill(null).map((_, i) => (
-            <span key={i} className="tr-marquee-item">
-              🌊 DREAMY ROOMS &nbsp;✦&nbsp; CALMING VIBES &nbsp;✦&nbsp; AESTHETIC LIGHTING &nbsp;✦&nbsp; COZY NIGHTS &nbsp;✦&nbsp; YOUR VIBE YOUR ROOM &nbsp;✦&nbsp;&nbsp;
-            </span>
-          ))}
-        </div>
-      </div>
-
       {/* ── HELPS WITH ── */}
       <section className="tr-helps">
         <h2 className="tr-helps-title">TRANSFORMS YOUR ROOM</h2>
