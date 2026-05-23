@@ -294,13 +294,6 @@ export default function Product() {
             </div>
           </div>
 
-          <div className="tr-vibe-marquee-wrap">
-            <div className="tr-vibe-marquee">
-              {Array(8).fill(null).map((_, i) => (
-                <span key={i} className="tr-vibe-marquee-item">aesthetic setup ✦ cozy room ✦ minimal vibes ✦ your space your light ✦&nbsp;&nbsp;</span>
-              ))}
-            </div>
-          </div>
 
         </div>
       </section>
